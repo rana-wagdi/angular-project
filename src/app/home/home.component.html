@@ -1,0 +1,33 @@
+<form #signup="ngForm" (submit)="save()">
+    <div>
+        <input type="text" name="_id" [(ngModel)]="spes._id" required #id="ngModel">
+        <span *ngIf="id.errors?.['required']">
+            id is required
+        </span>
+    </div>
+    <div>
+        <input type="text" name="fullName" [(ngModel)]="spes.fullName" required #name="ngModel" minlength="3">
+        <span *ngIf="name.errors?.['required'] && name.touched">
+            name is required
+        </span>
+        <span *ngIf="name.errors?.['required'] && name.touched">
+            min length 3
+        </span>
+    </div>
+    <div>
+        <input type="text" name="email" [(ngModel)]="spes.email" (change)="myfun(email.value)" required #email="ngModel" pattern="[a-zA-z0-9_]+@[A-Za-z0-9]+.[a-zA-z]{2,4}">
+        <span *ngIf="email.errors?.['required'] && email.touched">
+            email is required
+        </span>
+        <span *ngIf="email.errors?.['pattern'] && email.touched">
+            email format
+        </span>
+        <span *ngIf="emailIsUsed">
+        email already used
+        </span>
+    </div>
+    <input type="submit" value="add" [disabled]="signup.invalid">
+</form>
+{{spes|json}}
+<button (click)="show(name)">showUp</button>
+<div></div>

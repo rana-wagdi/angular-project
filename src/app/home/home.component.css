@@ -1,0 +1,8 @@
+div{
+height: 4vh;}
+input.ng-valid.ng-touched{
+    border: solid 2px green;
+}
+input.ng-invalid.ng-touched{
+    border: solid 2px red;
+}
